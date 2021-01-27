@@ -1,7 +1,9 @@
 require("@rails/ujs").start()
 
 import * as bootstrap from 'bootstrap'
-import "../stylesheets/application"
+import "../stylesheets/application.scss"
+import "../stylesheets/application.css"
+import "../stylesheets/events"
 
 document.addEventListener("DOMContentLoaded", function(event) {
   var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
