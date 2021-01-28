@@ -5,6 +5,8 @@ ruby '2.7.0'
 
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 
+gem 'devise'
+
 gem 'uglifier', '>= 1.3.0'
 
 gem 'jquery-rails'

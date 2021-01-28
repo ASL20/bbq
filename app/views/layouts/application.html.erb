@@ -20,9 +20,13 @@
 
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Link1", "/path1", class: "nav-link link-secondary ms-4" %></li>
-            <li><%= link_to "Link2", "/path2", class: "nav-link link-secondary ms-4"  %></li>
-            <li><%= link_to "Link3", "/path3", class: "nav-link link-secondary ms-4"  %></li>
+            <% if user_signed_in? %>
+              <li><%= link_to 'Профиль', current_user, class: "nav-link link-secondary ms-3" %></li>
+              <li><%= link_to 'Выйти', destroy_user_session_path, :method => :delete, class: "nav-link link-secondary ms-3" %></li>
+            <% else %>
+              <li><%= link_to 'Войти', new_user_session_path, class: "nav-link link-secondary ms-3" %></li>
+              <li><%= link_to 'Зарегистрироватьcя', new_user_registration_path, class: "nav-link link-secondary ms-3" %></li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -42,16 +46,7 @@
 
           <%= yield %>
         </div>
-        <div class="col-lg-3 bg-light card px-0 mt-4">
-          <div class="mt-5 ms-4 mb-4">
-            <h3>Sidebar</h3>
-            <ul class="nav list-group">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1", class: "nav-link" %></li>
-              <li><%= link_to "Link2", "/path2", class: "nav-link"  %></li>
-              <li><%= link_to "Link3", "/path3", class: "nav-link"  %></li>
-            </ul>
-          </div><!--/.well -->
+        <div class="col-lg-3">
         </div><!--/span-->
       </div><!--/row-->
 
