@@ -7,7 +7,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 
 gem 'devise'
 gem 'devise-i18n'
-gem 'russian'
+gem 'rails-i18n'
 
 gem 'uglifier', '>= 1.3.0'
 

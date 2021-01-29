@@ -33,3 +33,10 @@ ru:
     name: 'Шашлыки'
     company: 'Хороший программист'
 
+  errors:
+    messages:
+      not_saved:
+        one: "1 ошибка:"
+        few: "%{count} ошибки:"
+        many: "%{count} ошибок:"
+        other: "%{count} ошибок:"
