@@ -16,7 +16,7 @@
 
     <div class="navbar navbar-expand navbar-default navbar-static-top border-bottom">
       <div class="container">
-        <%= link_to "BBQ!", root_path, class: 'navbar-brand text-secondary' %>
+        <%= link_to t('app.name'), root_path, class: 'navbar-brand text-secondary' %>
 
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
@@ -44,7 +44,7 @@
       </div><!--/row-->
 
       <footer>
-        <p>&copy; Company 2016</p>
+        <p>&copy; <%= t('app.company') %> 2021</p>
       </footer>
 
     </div> <!-- /container -->
