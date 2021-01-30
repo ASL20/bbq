@@ -1,6 +1,7 @@
 require("@rails/ujs").start()
 
 import * as bootstrap from 'bootstrap'
+import "bootstrap-icons/font/bootstrap-icons"
 import "../stylesheets/application"
 
 document.addEventListener("DOMContentLoaded", function(event) {

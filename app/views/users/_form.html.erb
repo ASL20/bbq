@@ -1,7 +1,5 @@
 <%= form_for @user, html: { multipart: true} do |f| %>
-
   <%= render partial: 'partials/form_errors', locals: { model: @user } %>
-
 
   <div class="mb-3">
     <%= f.label :name, class: 'form-label' %>
