@@ -15,10 +15,9 @@
           </div>
 
           <% if current_user_can_edit?(@event) %>
-            <div class="buffer-top">
-              <%= link_to 'Изменить', edit_event_path(@event), class: 'btn btn-primary' %>
-            <% end %>
-          </div>
+            <%= link_to 'Изменить', edit_event_path(@event), class: 'buffer-top btn btn-primary' %>
+            <%= link_to "Удалить", event_path(@event), data: { confirm: t('are_you_sure') }, method: :delete, class: 'buffer-top btn btn-danger ms-2' %>
+          <% end %>
         </div>
       </div>
     </div>
