@@ -1,6 +1,11 @@
 class EventsController < ApplicationController
+  # Встроенный в девайз фильтр - посылает незалогиненного пользователя
   before_action :authenticate_user!, except: [:show, :index]
+
+  # Задаем объект @event для экшена show
   before_action :set_event, only: [:show]
+
+  # Задаем объект @event от текущего юзера для других действий
   before_action :set_current_user_event, only: [:edit, :update, :destroy]
 
   def index

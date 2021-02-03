@@ -1,11 +1,15 @@
 class SubscriptionsController < ApplicationController
+  # Задаем «родительский» event для подписки
   before_action :set_event, only: [:create, :destroy]
+
+  # Задаем подписку, которую юзер хочет удалить
   before_action :set_subscription, only: [:destroy]
 
   def create
     # Болванка для новой подписки
     @new_subscription = @event.subscriptions.build(subscription_params)
-    @new_subscription.user = current_user
+
+    @new_subscription.user = current_user unless current_user == @event.user
 
     if @new_subscription.save
       # Если сохранилась успешно, редирект на страницу самого события
