@@ -48,6 +48,7 @@ ru:
   subscriptions:
     subscription:
       destroy_confirm: 'Вы уверены, что хотите удалить эту подписку?'
+      yourself_subscription: 'не может подписаться на свое событие'
 
   errors:
     messages:
@@ -56,6 +57,7 @@ ru:
         few: "%{count} ошибки:"
         many: "%{count} ошибок:"
         other: "%{count} ошибок:"
+
 
   # Сообщение при удалении события или пользователя
   are_you_sure: 'Вы уверены?'

@@ -9,7 +9,7 @@ class SubscriptionsController < ApplicationController
     # Болванка для новой подписки
     @new_subscription = @event.subscriptions.build(subscription_params)
 
-    @new_subscription.user = current_user unless current_user == @event.user
+    @new_subscription.user = current_user
 
     if @new_subscription.save
       # Если сохранилась успешно, редирект на страницу самого события

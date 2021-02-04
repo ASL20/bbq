@@ -10,6 +10,13 @@ class Subscription < ApplicationRecord
   validates :user, uniqueness: { scope: :event_id }, if: -> { user.present? }
   validates :user_email, uniqueness: { scope: :event_id }, unless: -> { user.present? }
   validate :email_exists, unless: -> { user.present? }
+  validate :user_current?
+
+  def email_exists
+    if User.exists?(email: user_email.downcase)
+      errors.add(:user_email, :taken)
+    end
+  end
 
   def user_name
     if user.present?
@@ -27,9 +34,9 @@ class Subscription < ApplicationRecord
     end
   end
 
-  def email_exists
-    unless User.select(:email).where(email: user_email).blank?
-      errors.add(:user_email, "уже занят")
+  def user_current?
+    if user.present?
+      errors.add(:user, I18n.t('subscriptions.subscription.yourself_subscription'))
     end
   end
 end
