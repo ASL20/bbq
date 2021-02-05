@@ -12,12 +12,6 @@ class Subscription < ApplicationRecord
   validate :email_exists, unless: -> { user.present? }
   validate :user_current?
 
-  def email_exists
-    if User.exists?(email: user_email.downcase)
-      errors.add(:user_email, :taken)
-    end
-  end
-
   def user_name
     if user.present?
       user.name
@@ -34,8 +28,16 @@ class Subscription < ApplicationRecord
     end
   end
 
+  private
+
+  def email_exists
+    if User.exists?(email: user_email.downcase)
+      errors.add(:user_email, :taken)
+    end
+  end
+
   def user_current?
-    if user.present?
+    if event.user.eql?(user)
       errors.add(:user, I18n.t('subscriptions.subscription.yourself_subscription'))
     end
   end
