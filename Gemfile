@@ -15,6 +15,7 @@ gem 'jquery-rails'
 
 gem 'carrierwave'
 gem 'rmagick'
+gem 'fog-aws'
 
 gem 'webpacker', '~> 4.0'
 
