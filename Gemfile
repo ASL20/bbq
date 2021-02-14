@@ -13,6 +13,9 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'jquery-rails'
 
+gem 'carrierwave'
+gem 'rmagick'
+
 gem 'webpacker', '~> 4.0'
 
 group :production do
