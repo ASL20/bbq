@@ -17,6 +17,8 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'fog-aws'
 
+gem 'mailjet'
+
 gem 'webpacker', '~> 4.0'
 
 group :production do
