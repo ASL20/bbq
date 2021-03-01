@@ -18,6 +18,7 @@ gem 'rmagick'
 gem 'fog-aws'
 
 gem 'mailjet'
+gem 'dotenv-rails'
 
 gem 'webpacker', '~> 4.0'
 
