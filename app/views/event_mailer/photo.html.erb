@@ -1,5 +1,5 @@
 <h1><%= t '.title' %></h1>
-<p><%= image_tag @photo.photo.url %></p>
+<p><%= image_tag @photo.photo.thumb.url %></p>
 <p><%= t '.author' %>: <strong><%= @photo.user.name %></strong></p>
 
 <hr/>
@@ -7,7 +7,6 @@
 <%= t '.event' %>
 <h3><%= link_to @event.title, events_url(@event) %></h3>
 
-<%= t '.datetime' %>
 <h4><%= l @event.datetime %></h4>
 
 <%= t '.owner' %>
