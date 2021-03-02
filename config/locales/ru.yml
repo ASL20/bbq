@@ -96,7 +96,9 @@ ru:
       author: 'Автор'
       event: 'Событие'
       owner: 'Организатор'
-    class:
-      subscription: 'Новая подписка на'
-      comment: 'Новый комментарий @'
-      photo: 'Новая фотография @'
+    subscription: 
+      subject: 'Новая подписка на %{event}'
+    comment: 
+      subject: 'Новый комментарий @ %{event}'
+    photo: 
+      subject: 'Новая фотография @ %{event}'
