@@ -21,11 +21,13 @@
           <% end %>
         </div>
       </div>
+
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-8">
+      <div id="map" data-address="<%= @event.address %>" class="event-map"></div>
       <div class="event-photos">
         <div class="event-photos-gallery">
           <%= render partial: 'photos/photo', collection: @event.photos.except(@new_photo) %>
@@ -45,6 +47,7 @@
         </div>
       </div>
     </div>
+
 
     <div class="col-md-4">
       <div class="event-owner">
