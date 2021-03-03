@@ -6,6 +6,6 @@
 
 ---------------------
 
-<%= t '.event' %>: <%= link_to @event.title, events_url(@event) %>
+<%= t '.event' %>: <%= link_to @event.title, url_for(@event) %>
 <%= t '.datetime' %>: <%= l @event.datetime %>
 <%= t '.owner' %>: <%= @event.user.name %>

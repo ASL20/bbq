@@ -84,6 +84,7 @@ ru:
       author: 'Автор'
       event: 'Событие'
       owner: 'Организатор'
+      subject: 'Новый комментарий @ %{event}'
     subscription:
       title: 'Новая подписка'
       name: 'Имя'
@@ -91,14 +92,10 @@ ru:
       author: 'Автор'
       event: 'Событие'
       owner: 'Организатор'
+      subject: 'Новая подписка на %{event}'
     photo:
       title: 'Новая фотография'
       author: 'Автор'
       event: 'Событие'
       owner: 'Организатор'
-    subscription: 
-      subject: 'Новая подписка на %{event}'
-    comment: 
-      subject: 'Новый комментарий @ %{event}'
-    photo: 
       subject: 'Новая фотография @ %{event}'
