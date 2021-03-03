@@ -99,3 +99,40 @@ ru:
       event: 'Событие'
       owner: 'Организатор'
       subject: 'Новая фотография @ %{event}'
+
+  devise:
+    passwords:
+      edit:
+        change_your_password: 'Измените свой пароль'
+        new_password: 'Новый пароль'
+        characters_minimum: 'символов минимум'
+        confirm_new_password: 'Подтвердите новый пароль'
+        change_my_password: 'Изменить свой пароль'
+      new:
+        forgot_your_password: 'Забыли Ваш пароль?'
+        password_instructions: 'Отправить мне инструкции по сбросу пароля'
+    registrations:
+      edit:
+        edit: 'Редактировать'
+        leave_blank: 'оставьте поле пустым, если не хотите его менять'
+        characters_minimum: 'символов минимум'
+        current_password: 'нам нужен ваш текущий пароль, чтобы подтвердить ваши изменения'
+        update: 'Обновить'
+        cancel_account: 'Удалить мой аккаунт'
+        unhappy: 'Недовольны?'
+        back: 'Назад'
+      new:
+        sign_up: 'Зарегистрироваться'
+        characters_minimum: 'символов минимум'
+    sessions:
+      new:
+        log_in: 'Войти'
+    shared:
+      links:
+        log_in: 'Войти'
+        sign_up: 'Зарегистрироваться'
+        forgot_your_password: 'Забыли Ваш пароль?'
+        confirmation_instructions: 'Не получили инструкции по подтверждению?'
+        unlock_instructions: 'Не получили инструкции по разблокировке?'
+        sign_in_with: 'Войти в систему с'
+        
