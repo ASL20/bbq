@@ -5,6 +5,7 @@ ruby '2.7.0'
 
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 
+# девайз и локализация
 gem 'devise'
 gem 'devise-i18n'
 gem 'rails-i18n'
@@ -14,11 +15,11 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'fog-aws'
 
+# почта и env
 gem 'mailjet'
 gem 'dotenv-rails'
 
 gem 'webpacker', '~> 4.0'
-
 
 group :production do
   gem 'pg'
@@ -30,12 +31,9 @@ group :development, :test do
 end
 
 group :development do
-  gem 'capistrano', '~> 3.10'
-  gem 'capistrano-rails', '~> 1.6'
-  gem 'capistrano-passenger', '~> 0.2'
-  gem 'capistrano-rbenv', '~> 2.1'
-  gem 'capistrano-bundler', '~> 2.0'
-
-  gem 'ed25519', '>= 1.2', '< 2.0'
-  gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-passenger'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
 end
