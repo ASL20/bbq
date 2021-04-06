@@ -1,24 +1,36 @@
-# README
+# Приложение "BBQ"
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Описание
 
-Things you may want to cover:
+В данном приложении возможно создавать события с указанием даты и геолокации, на события можно подписываться, добавлять комментарии и фотографии. Уведомления о добавленных фотографиях и комментариях приходят всем подписанным на событие участникам по email. События возможно делать приватными, доступ осуществляется по PIN-коду.
 
-* Ruby version
+Ruby version 2.7.0
 
-* System dependencies
+Rails version 6.0.3
 
-* Configuration
+## Запуск приложения
 
-* Database creation
+Необходимо склонировать репозиторий командой:
 
-* Database initialization
+```
+git clone https://github.com/IrinaDedekina/bbq.git
+```
 
-* How to run the test suite
+Перейти в папку проекта
 
-* Services (job queues, cache servers, search engines, etc.)
+Создать файл .env и прописать свои переменные окружения в него
 
-* Deployment instructions
+Перед запуском программы необходимо выполнить команды:
+```
+bundle && bundle exec rake db:migrate
+```
+```
+yarn
+```
+Для запуска приложения выполнить команду:
+```
+bundle exec rails s
+```
+Перейти по ссылке:
 
-* ...
+http://localhost:3000/
