@@ -139,4 +139,4 @@ ru:
         sign_in_with: 'Войти в систему с'
         
   pundit:
-    not_authorized: 'Вам это запрещено!'
+    not_authorized: 'Доступ запрещен!'

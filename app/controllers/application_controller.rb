@@ -23,6 +23,10 @@ class ApplicationController < ActionController::Base
       (model.user == current_user || (model.try(:event).present? && model.event.user == current_user))
   end
 
+  def pundit_user
+    UserContext.new(current_user, cookies)
+  end
+
   private
   def user_not_authorized
     flash[:alert] = t('pundit.not_authorized')

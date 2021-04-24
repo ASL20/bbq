@@ -1,4 +1,8 @@
 class EventPolicy < ApplicationPolicy
+  def index?
+    user.present?
+  end
+
   def create?
     user.present?
   end
@@ -16,7 +20,9 @@ class EventPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    record.pincode.blank? ||
+      user_is_owner?(record) ||
+      record.pincode_valid?(cookies["events_#{record.id}_pincode"])
   end
 
   class Scope < Scope

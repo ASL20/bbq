@@ -3,11 +3,9 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
 
   # Задаем объект @event для экшена show
-  before_action :set_event, except: [:index, :new, :create]
+  before_action :set_event, only: [:show]
 
-  before_action :password_guard!, only: [:show]
-
-  after_action :verify_authorized, only: [:edit, :update, :destroy, :show]
+  after_action :verify_authorized, except: [:index]
   after_action :verify_policy_scoped, only: [:index]
 
   def index
@@ -15,17 +13,30 @@ class EventsController < ApplicationController
   end
 
   def show
-    authorize @event
+    begin
+      authorize @event
+    rescue Pundit::NotAuthorizedError
+      if params[:pincode]
+        cookies.permanent["events_#{@event.id}_pincode"] = params[:pincode]
+        params[:pincode] = nil
+
+        retry
+      end
+
+      flash.now[:alert] = I18n.t('controllers.events.wrong_pincode')
+      render 'password_form'
+      return
+    end
+
     @new_comment =  @event.comments.build(params[:comment])
     @new_subscription = @event.subscriptions.build(params[:subscription])
     @new_photo =  @event.photos.build(params[:photo])
-
   end
 
   def new
-    @event = current_user.events.build
-
     authorize @event
+
+    @event = current_user.events.build
   end
 
   def edit
