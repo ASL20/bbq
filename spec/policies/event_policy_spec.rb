@@ -1,35 +1,70 @@
 require 'rails_helper'
 
 RSpec.describe EventPolicy, type: :policy do
-  let(:current_user) { User.new }
-  let(:another_user) { User.new(id: 1) }
-  let(:event) { Event.new(user: current_user) }
-
   subject { described_class }
 
-  context 'when user is not owner' do
-    permissions :edit?, :update?, :destroy? do
-      it { is_expected.not_to permit(another_user, event) }
+  let(:user) { FactoryBot.create(:user) }
+  let(:another_user) { FactoryBot.create(:user) }
+
+  let(:event) { FactoryBot.create(:event, user: user) }
+  let(:event_with_pin) { FactoryBot.create(:event, user: user, pincode: '1234') }
+
+  let(:cookie) { { "events_#{event_with_pin.id}_pincode" => '1234' } }
+
+  let(:owner) { UserContext.new(user, {}) }
+  let(:not_owner) { UserContext.new(another_user, {}) }
+  let(:not_owner_with_pin) { UserContext.new(another_user, cookie) }
+  let(:anonimous_user) { UserContext.new(nil, {}) }
+
+  context 'user edit, update or destroy event' do
+    context 'and user is owner' do
+      permissions :edit?, :update?, :destroy? do
+        it { is_expected.to permit(owner, event) }
+      end
+    end
+
+    context 'and user is not owner' do
+      permissions :edit?, :update?, :destroy? do
+        it { is_expected.not_to permit(not_owner, event) }
+      end
+    end
+
+    context 'and user is anonimous' do
+      permissions :edit?, :update?, :destroy? do
+        it { is_expected.not_to permit(anonimous_user, event) }
+      end
     end
   end
 
-  context 'when user is not logged' do
-    permissions :edit?, :update?, :destroy? do
-      it { is_expected.not_to permit(nil, Event) }
+  context 'user viewing event' do
+    context 'and user is owner' do
+      permissions :show? do
+        it { is_expected.to permit(owner, event_with_pin) }
+        it { is_expected.to permit(owner, event) }
+      end
     end
-  end
 
-  context 'when user is the owner' do
-    permissions :edit?, :destroy?, :update? do
-      it { is_expected.to permit(current_user, event) }
+    context 'and user is not owner' do
+      permissions :show? do
+        it { is_expected.to permit(not_owner_with_pin, event_with_pin) }
+        it { is_expected.not_to permit(not_owner, event_with_pin) }
+        it { is_expected.to permit(not_owner, event) }
+      end
+    end
+
+    context 'and user is anonimous' do
+      permissions :show? do
+        it { is_expected.to permit(anonimous_user, event) }
+        it { is_expected.not_to permit(anonimous_user, event_with_pin) }
+      end
     end
   end
 
   context 'registered user create event' do
     permissions :create? do
-      it { is_expected.to permit(another_user, :event) }
-      it { is_expected.to permit(current_user, :event) }
-      it { is_expected.not_to permit(nil, Event) }
+      it { is_expected.to permit(not_owner, Event) }
+      it { is_expected.to permit(owner, Event) }
+      it { is_expected.not_to permit(anonimous_user, Event) }
     end
   end
 end
