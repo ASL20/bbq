@@ -20,6 +20,8 @@ gem 'fog-aws'
 gem 'mailjet'
 gem 'dotenv-rails'
 
+gem 'resque'
+
 gem 'webpacker', '~> 4.0'
 
 group :production do
@@ -40,4 +42,5 @@ group :development do
   gem 'capistrano-passenger'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
+  gem 'letter_opener'
 end
