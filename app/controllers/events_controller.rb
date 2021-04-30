@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   # Задаем объект @event для экшена show
   before_action :set_event, only: [:show]
 
-  after_action :verify_authorized, except: [:index]
+  after_action :verify_authorized, only: [:edit, :update, :destroy, :show]
   after_action :verify_policy_scoped, only: [:index]
 
   def index
@@ -32,8 +32,6 @@ class EventsController < ApplicationController
   end
 
   def new
-    authorize @event
-
     @event = current_user.events.build
   end
 
@@ -43,7 +41,6 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.build(event_params)
-    authorize @event
 
     if @event.save
       redirect_to @event, notice: I18n.t('controllers.events.created')
