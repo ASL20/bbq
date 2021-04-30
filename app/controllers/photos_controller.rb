@@ -9,7 +9,8 @@ class PhotosController < ApplicationController
     @new_photo.user = current_user
 
     if @new_photo.save
-      notify_subscribers(@event, @new_photo)
+      MailNotificationsJob.perform_later(@event, @new_photo)
+      # notify_subscribers(@event, @new_photo)
       redirect_to @event, notice: I18n.t('controllers.photos.created')
     else
       render 'events/show', alert: I18n.t('controllers.photos.error')
@@ -48,7 +49,7 @@ class PhotosController < ApplicationController
     # собираем всех подписчиков и автора события в массив мэйлов, исключаем повторяющиеся и автора фото
     all_emails = (event.subscriptions.map(&:user_email) + [event.user.email]  - [current_user.email]).uniq
     all_emails.each do |mail|
-      EventMailer.photo(event, photo, mail).deliver_now
+     MailNotificationsJob.perform_later(event, photo, mail)
     end
   end
 end

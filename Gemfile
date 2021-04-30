@@ -42,6 +42,6 @@ group :development do
   gem 'capistrano-passenger'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
-  gem 'capistrano-resque'
+  gem "capistrano-resque", "~> 0.2.2", require: false
   gem 'letter_opener'
 end

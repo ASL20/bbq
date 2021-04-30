@@ -1,8 +1,4 @@
 class EventPolicy < ApplicationPolicy
-  def create?
-    user.present?
-  end
-
   def edit?
     user_is_owner?(record)
   end
